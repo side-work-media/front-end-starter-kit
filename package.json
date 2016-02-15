@@ -1,0 +1,26 @@
+{
+  "name": "front-end-starter-kit",
+  "version": "1.0.0",
+  "description": "Front-end starter kit that bundles Javascript, has a css base, and a templating system.",
+  "scripts": {
+    "clean": "rimraf dist",
+    "prebuild": "mkdirp dist",
+    "build": "node tools/build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/side-work-media/front-end-starter-kit.git"
+  },
+  "author": "Christopher Dierkens <cjdierkens@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/side-work-media/front-end-starter-kit/issues"
+  },
+  "homepage": "https://github.com/side-work-media/front-end-starter-kit#readme",
+  "devDependencies": {
+    "glob": "^7.0.0",
+    "handlebars": "^4.0.5",
+    "mkdirp": "^0.5.1",
+    "rimraf": "^2.5.2"
+  }
+}
