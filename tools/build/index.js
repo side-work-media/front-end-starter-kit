@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 
+var autoprefixer = require('autoprefixer');
 var fs = require("fs");
 var glob = require("glob");
 var Handlebars = require("handlebars");
-var path = require("path");
 var mkdirp = require("mkdirp");
-var sass =require("node-sass");
-var autoprefixer = require('autoprefixer');
+var path = require("path");
 var postcss = require('postcss');
+var sass =require("node-sass");
 
 glob.sync("source/partials/**/*.hbs")
     .forEach(function (file) {
