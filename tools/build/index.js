@@ -4,27 +4,25 @@ var fs = require("fs");
 var glob = require("glob");
 var Handlebars = require("handlebars");
 var path = require("path");
+var mkdirp = require("mkdirp");
+var sass =require("node-sass");
+var autoprefixer = require('autoprefixer');
+var postcss = require('postcss');
 
-glob("source/!(pages)/**/*.hbs", function (error, files) {
-    if (error) {
-        console.log(error);
-        return;
-    }
-
-    files.forEach(function (file) {
+glob.sync("source/partials/**/*.hbs")
+    .forEach(function (file) {
         var source = fs.readFileSync(file).toString();
 
         Handlebars.registerPartial(file.replace(".hbs", ""), source)
-    });
-})
+    })
 
-glob("source/+(pages)/**/*.hbs", function (error, files) {
-    files.forEach(function (file) {
-        var source = fs.readFileSync(file).toString();
-        var template = Handlebars.compile(source);
-        var markup = template();
-        var pageName = path.dirname(file).split(path.sep).pop();
-        var htmlPath = path.join("dist", `${pageName}.html`);
-        fs.writeFileSync(htmlPath, markup);
+glob.sync("source/pages/**/*.hbs")
+    .forEach(function (file) {
+        var source = fs.readFileSync(file).toString()
+            template = Handlebars.compile(source),
+            distDirectory = path.dirname(file).replace("source" + path.sep + "pages", "dist"),
+            distPath = distDirectory + path.sep + path.basename(file, ".hbs") + ".html";
+
+        mkdirp.sync(distDirectory);
+        fs.writeFileSync(distPath, template());
     });
-});

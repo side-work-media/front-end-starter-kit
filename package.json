@@ -3,9 +3,16 @@
   "version": "1.0.0",
   "description": "Front-end starter kit that bundles Javascript, has a css base, and a templating system.",
   "scripts": {
+    "build": "npm-run-all --parallel build:*",
+    "build:pages": "node tools/build",
+    "build:scripts": "browserify source/scripts/main.js -o dist/main.js && uglifyjs dist/main.js -o dist/main.min.js --source-map dist/main.js.map -p relative",
+    "build:styles": "mkdirp dist/styles && node-sass --output-style expanded --source-comments source/styles/main.scss dist/styles/main.css && postcss -m -u autoprefixer -u cssnano -o dist/styles/main.min.css dist/styles/main.css",
     "clean": "rimraf dist",
-    "prebuild": "mkdirp dist",
-    "build": "node tools/build"
+    "start": "browser-sync start --server dist --files 'dist/**/*.css, dist/*.html, dist/**/*.html, dist/**/*.js'",
+    "watch": "npm-run-all --parallel watch:*",
+    "watch:pages": "onchange 'source/pages/**/*.hbs' -- npm run build:pages",
+    "watch:scripts": "onchange 'source/scripts/**/*.js' -- npm run build:scripts",
+    "watch:styles": "onchange 'source/styles/**/*.scss' -- npm run build:styles"
   },
   "repository": {
     "type": "git",
@@ -18,9 +25,19 @@
   },
   "homepage": "https://github.com/side-work-media/front-end-starter-kit#readme",
   "devDependencies": {
+    "autoprefixer": "^6.3.3",
+    "browser-sync": "^2.11.1",
+    "browserify": "^13.0.0",
+    "cssnano": "^3.5.2",
     "glob": "^7.0.0",
     "handlebars": "^4.0.5",
+    "lodash": "^4.5.0",
     "mkdirp": "^0.5.1",
-    "rimraf": "^2.5.2"
+    "node-sass": "^3.4.2",
+    "npm-run-all": "^1.5.1",
+    "onchange": "^2.0.0",
+    "postcss-cli": "^2.5.1",
+    "rimraf": "^2.5.2",
+    "uglify-js": "^2.6.1"
   }
 }
