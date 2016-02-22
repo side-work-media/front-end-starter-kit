@@ -14,7 +14,8 @@ function hide () {
 function show () {
     $nav.css({
         position: "fixed",
-        top: 0
+        top: 0,
+        padding: "0 40px"
     });
 
     $wrapper.css("padding-top", 0);
