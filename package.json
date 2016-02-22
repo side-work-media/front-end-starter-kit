@@ -4,6 +4,7 @@
   "description": "Front-end starter kit that bundles Javascript, has a css base, and a templating system.",
   "scripts": {
     "build": "npm-run-all --parallel build:*",
+    "build:images": "imagemin -o 7 source/assets/images dist/assests/images",
     "build:pages": "node tools/build",
     "build:scripts": "browserify source/scripts/main.js -o dist/main.js && uglifyjs dist/main.js -o dist/main.min.js --source-map dist/main.js.map -p relative",
     "build:styles": "node-sass --importer tools/importer/index.js --output-style expanded --source-comments source/styles/main.scss dist/styles/main.css && postcss -m -u autoprefixer -u cssnano -o dist/styles/main.min.css dist/styles/main.css",
@@ -32,7 +33,7 @@
     "cssnano": "^3.5.2",
     "glob": "^7.0.0",
     "handlebars": "^4.0.5",
-    "lodash": "^4.5.0",
+    "imagemin-cli": "^2.1.0",
     "mkdirp": "^0.5.1",
     "node-sass": "^3.4.2",
     "normalize-scss": "^4.0.3",
@@ -41,5 +42,8 @@
     "postcss-cli": "^2.5.1",
     "rimraf": "^2.5.2",
     "uglify-js": "^2.6.1"
+  },
+  "dependencies": {
+    "jquery": "^2.2.0"
   }
 }

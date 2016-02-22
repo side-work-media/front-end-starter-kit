@@ -1,5 +1,10 @@
 @import "normalize";
 @include normalize();
 
+@import "colors";
+@import "utilities";
+
 @import "base";
+
 @import "header";
+@import "hero";

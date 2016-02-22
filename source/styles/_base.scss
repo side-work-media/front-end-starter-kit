@@ -1,0 +1,52 @@
+body {
+    font-family: "Vollkorn", serif;
+}
+
+h1, h2, h3, h4, h5, h6, nav {
+    font-family: "Unica One", sans-serif;
+    text-transform: uppercase;
+    color: $red;
+}
+
+p {
+    max-width: 400px;
+    text-align: justify;
+}
+
+.container {
+    padding: 0 40px;
+}
+
+.container.columns {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    p {
+        max-width: initial;
+    }
+
+    > div {
+        padding: 0 10px;
+        flex: 1 0 33%;
+        box-sizing: border-box;
+
+        @media (max-width: 767px) {
+            flex: 1 0 50%;
+        }
+
+        @media (max-width: 480px) {
+            flex: 1 0 100%;
+        }
+    }
+
+    &.two  {
+        > div:nth-child(odd) {
+            flex: 0 1 25%;
+        }
+
+        > div:nth-child(even) {
+            flex: 1 0 75%;
+        }
+    }
+}
