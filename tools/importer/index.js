@@ -1,8 +1,10 @@
+"use strict";
+
 var path = require("path");
 
-module.exports = function(file, prev) {
+module.exports = function (file, prev) {
     if (file === "normalize") {
-        file = normalizePath = path.resolve("node_modules/normalize-scss/sass/normalize");
+        file = path.resolve("node_modules/normalize-scss/sass/normalize");
     }
 
     if (file === "support-for" && prev.indexOf("normalize") > -1) {
@@ -10,6 +12,6 @@ module.exports = function(file, prev) {
     }
 
     return {
-      file: file
+        file: file
     };
 };

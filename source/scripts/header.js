@@ -1,3 +1,5 @@
+"use strict";
+
 var $ = require("jQuery");
 
 var $wrapper,
@@ -21,7 +23,7 @@ function show () {
 function onScroll () {
     if (scrollTop <= height) {
         show();
-    } else if (scrollTop > $(window).scrollTop()){
+    } else if (scrollTop > $(window).scrollTop()) {
         show();
     } else {
         hide();
