@@ -2,10 +2,16 @@ body {
     font-family: "Vollkorn", serif;
 }
 
-h1, h2, h3, h4, h5, h6, nav {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+nav {
+    color: $red;
     font-family: "Unica One", sans-serif;
     text-transform: uppercase;
-    color: $red;
 }
 
 p {
@@ -15,21 +21,35 @@ p {
 
 .container {
     padding: 0 40px;
+    transition: padding 0.5s;
+
+    @media (max-width: 480px) {
+        padding: 0;
+    }
+
+    nav ul {
+        @media (max-width: 767px) {
+            display: flex;
+            justify-content: space-between;
+            list-style-type: none;
+            padding-left: 0;
+        }
+    }
 }
 
 .container.columns {
     display: flex;
-    justify-content: space-around;
     flex-wrap: wrap;
+    justify-content: space-around;
 
     p {
         max-width: initial;
     }
 
     > div {
-        padding: 0 10px;
-        flex: 1 0 33%;
         box-sizing: border-box;
+        flex: 1 0 33%;
+        padding: 0 10px;
 
         @media (max-width: 767px) {
             flex: 1 0 50%;
@@ -43,6 +63,10 @@ p {
     &.two  {
         > div:nth-child(odd) {
             flex: 0 1 25%;
+
+            @media (max-width: 767px) {
+                flex: 1 0 100%;
+            }
         }
 
         > div:nth-child(even) {

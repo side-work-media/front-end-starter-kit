@@ -1,6 +1,6 @@
 "use strict";
 
-var path = require("path");
+import * as path from "path";
 
 module.exports = function (file, prev) {
     if (file === "normalize") {
@@ -12,6 +12,6 @@ module.exports = function (file, prev) {
     }
 
     return {
-        file: file
+        file
     };
 };

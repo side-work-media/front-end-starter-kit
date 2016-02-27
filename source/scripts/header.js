@@ -1,8 +1,6 @@
-"use strict";
+const $ = require("jQuery");
 
-var $ = require("jQuery");
-
-var $wrapper,
+let $wrapper,
     $nav,
     height,
     scrollTop;
@@ -12,6 +10,7 @@ function hide () {
 }
 
 function show () {
+    // TODO: Add remove a class that uses these styles.
     $nav.css({
         padding: "0 40px",
         position: "fixed",

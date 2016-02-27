@@ -1,5 +1,5 @@
 header nav {
-    background: rgba(255, 255, 255, 0.75);
+    background: rgba($white, 0.75);
     left: 0;
     right: 0;
     top: 0;
@@ -32,7 +32,8 @@ header nav {
                     transition: right 0.5s;
                 }
 
-                &:focus::before, &:hover::before {
+                &:focus::before,
+                &:hover::before {
                     right: 0;
                 }
 
@@ -40,7 +41,8 @@ header nav {
                     color: $black;
                 }
 
-                &:focus, &:hover {
+                &:focus,
+                &:hover {
                     color: $red;
                 }
             }

@@ -1,3 +1,3 @@
-var header = require("./header");
+import * as header from "./header";
 
 header.init();

@@ -1,31 +1,66 @@
 .hero {
-    height: calc(100vh - 71px);
+    @mixin hero-background($url) {
+        background-image: linear-gradient(to right, rgba($black, 0.5) 300px, rgba($black, 0)), url($url);
+    }
+
+    @include hero-background("/assests/images/hero-bicycle-1920-1200.jpg");
+
+    background-position: right center;
+    background-size: cover;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    background-image:
-        linear-gradient(
-            to right,
-            rgba(0, 0, 0, 0.25) 420px,
-            rgba(0, 0, 0, 0)
-        ),
-        url(/assests/images/hero-bicycle.jpg);
-    background-size: cover;
+    min-height: calc(100vh - 71px);
+    overflow: auto;
+    position: relative;
 
-    div {
+    @media (max-width: 1280px) {
+        @include hero-background("/assests/images/hero-bicycle-1280-800.jpg");
+    }
+
+    @media (max-width: 768px) {
+        @include hero-background("/assests/images/hero-bicycle-768-480.jpg");
+    }
+
+    @media (max-width: 480px) {
+        @include hero-background("/assests/images/hero-bicycle-480-300.jpg");
+    }
+
+    &::before {
+        background: inherit;
+        bottom: 0;
+        content: "";
+        filter: blur(3px);
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    > div {
         padding: 20px;
+        z-index: 1;
     }
 
     p {
         color: $white;
     }
 
-    p, h1, h2, h3, h4, h5 {
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
         text-shadow: 0 1px 0 $black;
     }
 
-    h1, h2, h3, h4, h5 {
-        background-color: rgba(255, 255, 255, 0.5);
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        background-color: rgba($white, 0.5);
         box-sizing: border-box;
         max-width: 400px;
         padding: 2px 5px;
