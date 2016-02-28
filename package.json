@@ -5,7 +5,7 @@
   "scripts": {
     "build": "npm-run-all --parallel build:*",
     "build:images": "imagemin -o 7 source/assets/images dist/assests/images",
-    "build:pages": "node tools/build",
+    "build:pages": "handlebars-to-html -t 'source/pages/**/*.hbs' -p 'source/partials/**/*.hbs'",
     "build:scripts": "browserify source/scripts/main.js -o dist/main.js -t [babelify] && uglifyjs dist/main.js -o dist/main.min.js --source-map dist/main.js.map -p relative",
     "build:styles": "babel-node node_modules/.bin/node-sass -q --importer tools/importer/index.js --output-style expanded --source-comments source/styles/main.scss dist/styles/main.css && postcss -m -u autoprefixer -u cssnano -o dist/styles/main.min.css dist/styles/main.css",
     "check": "npm-run-all --parallel lint build",
@@ -43,6 +43,7 @@
     "cssnano": "^3.5.2",
     "glob": "^7.0.0",
     "handlebars": "^4.0.5",
+    "handlebars-to-html": "^1.0.3",
     "imagemin-cli": "^2.1.0",
     "jscs": "^2.10.1",
     "jshint": "^2.9.1",
